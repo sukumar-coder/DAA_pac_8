@@ -1,0 +1,25 @@
+graph = {}
+
+n = int(input("Enter number of vertices: "))
+
+for i in range(n):
+    vertex = input("Enter vertex: ")
+    neighbors = input("Enter connected vertices: ").split()
+    graph[vertex] = neighbors
+
+start = input("Enter starting vertex: ")
+
+queue = [start]
+visited = []
+
+while queue:
+    node = queue.pop(0)
+
+    if node not in visited:
+        visited.append(node)
+
+        for x in graph[node]:
+            if x not in visited:
+                queue.append(x)
+
+print("BFS Traversal:", visited)
